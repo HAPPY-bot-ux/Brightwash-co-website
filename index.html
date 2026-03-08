@@ -3,57 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BRIGHTWASH | Advanced Chemical Engineering</title>
+    <title>Brightwash · Kraaifontein | SA Detergents</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; background: #05070a; }
-        
-        /* 3D Glassmorphism Effect */
         .glass {
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
         }
-
-        /* Animated Gradient Background */
         .bg-mesh {
             background-color: #05070a;
             background-image: 
                 radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.15) 0, transparent 50%), 
                 radial-gradient(at 100% 100%, rgba(147, 51, 234, 0.1) 0, transparent 50%);
         }
-
-        /* Floating Animation */
+        .text-gradient {
+            background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
         @keyframes float {
             0% { transform: translateY(0px) rotate(0deg); }
             50% { transform: translateY(-20px) rotate(2deg); }
             100% { transform: translateY(0px) rotate(0deg); }
         }
         .animate-float { animation: float 6s ease-in-out infinite; }
-
-        /* Molecule Pulse */
-        .pulse-ring {
-            position: absolute;
-            border: 2px solid rgba(59, 130, 246, 0.5);
-            border-radius: 50%;
-            animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-        @keyframes pulse {
-            0% { transform: scale(1); opacity: 0.8; }
-            100% { transform: scale(2.5); opacity: 0; }
-        }
-
-        .text-gradient {
-            background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
     </style>
 </head>
 <body class="bg-mesh text-slate-200 antialiased">
 
+<!-- header (same structure, but location hint) -->
 <header class="fixed w-full top-0 z-[500] bg-[#050505] border-b border-white/5">
     <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         <h1 class="text-xl font-black tracking-tighter flex items-center gap-2 relative z-[600]">
@@ -62,18 +44,16 @@
             </div>
             <span class="text-white uppercase tracking-tight">Bright<span class="text-blue-500">wash</span></span>
         </h1>
-
         <nav class="hidden md:block">
             <ul class="flex gap-10 text-xs font-bold uppercase tracking-widest text-slate-400">
                 <li><a href="index.html" class="text-blue-500 underline decoration-2 underline-offset-8">Home</a></li>
                 <li><a href="about.html" class="hover:text-white transition-colors">About</a></li>
-                <li><a href="services.html" class="hover:text-white transition-colors">Services</a></li>
-                <li><a href="products.html" class="hover:text-white transition-colors">Products</a></li>
+                <li><a href="services.html" class="hover:text-white transition-colors">Services</a></li>                
                 <li><a href="safety.html" class="hover:text-white transition-colors">Safety</a></li>
                 <li><a href="contact.html" class="hover:text-white transition-colors">Contact Us</a></li>
             </ul>
         </nav>
-
+        <!-- mobile button same as before (kept) -->
         <button id="mobile-menu-button" class="group relative z-[600] md:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 bg-[#111] rounded-lg border border-white/10 active:scale-95 transition-all focus:outline-none">
             <span id="line1" class="w-5 h-0.5 bg-blue-500 transition-all duration-300"></span>
             <span id="line2" class="w-5 h-0.5 bg-white transition-all duration-300"></span>
@@ -81,57 +61,25 @@
         </button>
     </div>
 
+    <!-- mobile menu (unchanged) -->
     <div id="mobile-menu" class="fixed top-0 right-0 h-full w-[280px] bg-[#0a0a0a] border-l border-white/10 translate-x-full pointer-events-none transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] md:hidden flex flex-col shadow-[-20px_0_40px_rgba(0,0,0,0.8)]">
-        
         <div class="absolute left-0 top-0 w-[2px] h-full bg-blue-600/50"></div>
-
         <nav class="mt-24 px-8">
             <p class="text-[9px] font-black tracking-[0.4em] text-blue-500 mb-8 uppercase opacity-60">System Menu</p>
             <ul class="flex flex-col gap-1">
-                <li class="menu-item opacity-0 translate-x-10 transition-all duration-500 delay-[100ms]">
-                    <a href="index.html" class="py-3 text-lg font-bold text-white hover:text-blue-500 flex items-center justify-between group border-b border-white/[0.03]">
-                        Home <span class="text-xs font-light text-slate-600 group-hover:text-blue-500 transition-colors">01</span>
-                    </a>
-                </li>
-                <li class="menu-item opacity-0 translate-x-10 transition-all duration-500 delay-[150ms]">
-                    <a href="about.html" class="py-3 text-lg font-bold text-white hover:text-blue-500 flex items-center justify-between group border-b border-white/[0.03]">
-                        About <span class="text-xs font-light text-slate-600 group-hover:text-blue-500 transition-colors">02</span>
-                    </a>
-                </li>
-                <li class="menu-item opacity-0 translate-x-10 transition-all duration-500 delay-[200ms]">
-                    <a href="services.html" class="py-3 text-lg font-bold text-white hover:text-blue-500 flex items-center justify-between group border-b border-white/[0.03]">
-                        Services <span class="text-xs font-light text-slate-600 group-hover:text-blue-500 transition-colors">03</span>
-                    </a>
-                </li>
-                <li class="menu-item opacity-0 translate-x-10 transition-all duration-500 delay-[250ms]">
-                    <a href="products.html" class="py-3 text-lg font-bold text-white hover:text-blue-500 flex items-center justify-between group border-b border-white/[0.03]">
-                        Products <span class="text-xs font-light text-slate-600 group-hover:text-blue-500 transition-colors">04</span>
-                    </a>
-                </li>
-                <li class="menu-item opacity-0 translate-x-10 transition-all duration-500 delay-[300ms]">
-                    <a href="safety.html" class="py-3 text-lg font-bold text-white hover:text-blue-500 flex items-center justify-between group border-b border-white/[0.03]">
-                        Safety <span class="text-xs font-light text-slate-600 group-hover:text-blue-500 transition-colors">05</span>
-                    </a>
-                </li>
-                <li class="menu-item opacity-0 translate-x-10 transition-all duration-500 delay-[350ms]">
-                    <a href="contact.html" class="py-3 text-lg font-bold text-white hover:text-blue-500 flex items-center justify-between group">
-                        Contact <span class="text-xs font-light text-slate-600 group-hover:text-blue-500 transition-colors">06</span>
-                    </a>
-                </li>
+                <li class="menu-item opacity-0 translate-x-10 transition-all duration-500 delay-[100ms]"><a href="index.html" class="py-3 text-lg font-bold text-white hover:text-blue-500 flex items-center justify-between group border-b border-white/[0.03]">Home <span class="text-xs font-light text-slate-600 group-hover:text-blue-500 transition-colors">01</span></a></li>
+                <li class="menu-item opacity-0 translate-x-10 transition-all duration-500 delay-[150ms]"><a href="about.html" class="py-3 text-lg font-bold text-white hover:text-blue-500 flex items-center justify-between group border-b border-white/[0.03]">About <span class="text-xs font-light text-slate-600 group-hover:text-blue-500 transition-colors">02</span></a></li>
+                <li class="menu-item opacity-0 translate-x-10 transition-all duration-500 delay-[200ms]"><a href="services.html" class="py-3 text-lg font-bold text-white hover:text-blue-500 flex items-center justify-between group border-b border-white/[0.03]">Services <span class="text-xs font-light text-slate-600 group-hover:text-blue-500 transition-colors">03</span></a></li>
+                <li class="menu-item opacity-0 translate-x-10 transition-all duration-500 delay-[250ms]"><a href="products.html" class="py-3 text-lg font-bold text-white hover:text-blue-500 flex items-center justify-between group border-b border-white/[0.03]">Products <span class="text-xs font-light text-slate-600 group-hover:text-blue-500 transition-colors">04</span></a></li>
+                <li class="menu-item opacity-0 translate-x-10 transition-all duration-500 delay-[300ms]"><a href="safety.html" class="py-3 text-lg font-bold text-white hover:text-blue-500 flex items-center justify-between group border-b border-white/[0.03]">Safety <span class="text-xs font-light text-slate-600 group-hover:text-blue-500 transition-colors">05</span></a></li>
+                <li class="menu-item opacity-0 translate-x-10 transition-all duration-500 delay-[350ms]"><a href="contact.html" class="py-3 text-lg font-bold text-white hover:text-blue-500 flex items-center justify-between group">Contact <span class="text-xs font-light text-slate-600 group-hover:text-blue-500 transition-colors">06</span></a></li>
             </ul>
         </nav>
-
         <div class="mt-auto p-8 bg-[#070707] border-t border-white/5 opacity-0 transition-opacity duration-700 delay-[500ms]" id="menu-footer">
-            <div class="flex items-center gap-3 mb-4">
-                <div class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></div>
-                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Lab Server Active</span>
-            </div>
-            <p class="text-[9px] text-slate-600 uppercase tracking-widest leading-relaxed">
-                Brightwash Biological<br>Copyright 2026
-            </p>
+            <div class="flex items-center gap-3 mb-4"><div class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></div><span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Lab Server Active</span></div>
+            <p class="text-[9px] text-slate-600 uppercase tracking-widest leading-relaxed">Brightwash Biological · Cape Town</p>
         </div>
     </div>
-
     <script>
         const btn = document.getElementById('mobile-menu-button');
         const menu = document.getElementById('mobile-menu');
@@ -140,9 +88,7 @@
         const l1 = document.getElementById('line1');
         const l2 = document.getElementById('line2');
         const l3 = document.getElementById('line3');
-
         let isOpen = false;
-
         btn.addEventListener('click', () => {
             isOpen = !isOpen;
             if (isOpen) {
@@ -163,10 +109,10 @@
         });
     </script>
 </header>
-      
 
+<!-- HERO SECTION — washing powder focus, kraaifontein mention -->
 <section class="relative min-h-screen flex items-center justify-center pt-24 pb-12 overflow-hidden bg-cover bg-center" 
-         style="background-image: radial-gradient(circle at center, rgba(5, 7, 10, 0.7) 0%, rgba(5, 7, 10, 0.95) 100%), url('./images/image1.jpg');">
+         style="background-image: radial-gradient(circle at center, rgba(5, 7, 10, 0.7) 0%, rgba(5, 7, 10, 0.95) 100%), url('https://images.unsplash.com/photo-1582735689369-4fe89db7114c?q=80&w=1974&auto=format&fit=crop'); background-position: center 30%;">
     
     <div class="absolute inset-0 opacity-10 pointer-events-none" 
          style="background-image: linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px); background-size: 50px 50px;">
@@ -174,100 +120,132 @@
 
     <div class="container mx-auto px-6 relative z-10">
         <div class="flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-8">
-            
             <div class="w-full lg:w-1/2 space-y-8 text-center lg:text-left order-2 lg:order-1">
+                <!-- location chip: kraaifontein, cape town -->
                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-[10px] font-black tracking-[0.2em] uppercase backdrop-blur-md">
                     <span class="relative flex h-2 w-2">
                         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
                         <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
                     </span>
-                    Molecular Engineering Excellence
+                    Kraaifontein · Cape Town · since 2012
                 </div>
 
                 <h2 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-800 leading-[0.9] tracking-tighter text-white">
-                    Purity <br class="hidden sm:block"> Through <br>
+                    Premium <br class="hidden sm:block"> Washing <br>
                     <span class="text-blue-500 relative inline-block">
-                        Science.
+                        Powder.
                         <span class="absolute bottom-2 left-0 w-full h-2 bg-blue-500/20 -z-10"></span>
                     </span>
                 </h2>
 
                 <p class="text-base md:text-lg text-slate-300 max-w-lg mx-auto lg:mx-0 leading-relaxed font-light">
-                    Engineering next-generation detergents and household surfactants with industrial precision and eco-conscious molecular structures.
+                    Manufactured in Kraaifontein — high‑foam & low‑foam detergents for industrial laundries, household use, and bulk distributors across Southern Africa.
                 </p>
 
                 <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
                     <button class="w-full sm:w-auto px-10 py-4 bg-blue-600 text-white text-xs font-black uppercase tracking-widest rounded-xl hover:bg-blue-500 hover:-translate-y-1 transition-all shadow-xl shadow-blue-600/30">
-                        Bulk Inquiries
+                        Order 25kg bags
                     </button>
                     <button class="w-full sm:w-auto px-10 py-4 bg-white/5 border border-white/10 backdrop-blur-md text-white text-xs font-black uppercase tracking-widest rounded-xl hover:bg-white/10 hover:-translate-y-1 transition-all">
-                        MSDS Sheets
+                        View SDS (EN/AF)
                     </button>
                 </div>
             </div>
 
+            <!-- detergent product visual (3D spheres as powder representation) -->
             <div class="w-full lg:w-1/2 flex justify-center items-center order-1 lg:order-2">
                 <div class="relative scale-90 sm:scale-100">
                     <div class="w-64 h-64 sm:w-96 sm:h-96 bg-blue-600/20 rounded-full filter blur-[100px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
                     
-                
+                    <!-- washing powder "molecules" / granules -->
+                    <div class="relative w-64 h-64 sm:w-80 sm:h-80 flex items-center justify-center">
+                        <!-- floating granules -->
+                        <div class="absolute w-20 h-20 bg-blue-400/10 rounded-full blur-xl top-5 left-5 animate-pulse"></div>
+                        <div class="absolute w-32 h-32 bg-sky-400/10 rounded-full blur-2xl bottom-0 right-0"></div>
+                        
+                        <!-- main abstract powder pile (using circles) -->
+                        <div class="relative w-48 h-48">
+                            <div class="absolute w-16 h-16 bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl rotate-12 top-0 left-4 shadow-2xl"></div>
+                            <div class="absolute w-20 h-20 bg-blue-500/10 backdrop-blur-sm border border-white/10 rounded-3xl -rotate-6 bottom-8 right-2 shadow-2xl"></div>
+                            <div class="absolute w-24 h-24 bg-blue-400/5 backdrop-blur-sm border border-white/10 rounded-full top-12 right-8 shadow-xl"></div>
+                            <!-- powder-text label -->
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span class="bg-blue-600/90 text-white text-[10px] font-black py-1 px-3 rounded-full tracking-widest rotate-6 shadow-lg">ACTIVE OXYGEN</span>
+                            </div>
+                        </div>
+                    </div>
 
-                    <div class="absolute -top-6 -right-6 sm:-top-12 sm:right-0 w-28 sm:w-32 glass border border-white/20 rounded-2xl p-3 sm:p-4 animate-bounce backdrop-blur-xl shadow-2xl z-20">
-                        <p class="text-[7px] text-slate-400 uppercase font-black mb-1">Stability</p>
-                        <span class="text-blue-400 font-black text-lg underline decoration-blue-500/30">99.9%</span>
+                    <!-- floating badges (washing powder stats) -->
+                    <div class="absolute -top-6 -right-6 sm:-top-12 sm:right-0 w-32 sm:w-36 glass border border-white/20 rounded-2xl p-3 sm:p-4 animate-bounce backdrop-blur-xl shadow-2xl z-20">
+                        <p class="text-[7px] text-slate-400 uppercase font-black mb-1">Enzymatic power</p>
+                        <span class="text-blue-400 font-black text-lg underline decoration-blue-500/30">98%</span>
+                        <p class="text-[6px] text-slate-500">stain removal (SABS tested)</p>
                     </div>
 
                     <div class="absolute -bottom-6 -left-6 sm:-bottom-8 sm:-left-12 glass border border-white/10 rounded-2xl p-3 sm:p-4 shadow-2xl backdrop-blur-xl z-20">
                         <div class="flex items-center gap-3">
                             <div class="w-8 h-8 rounded-lg bg-blue-500/20 flex items-center justify-center text-blue-400">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"></path></svg>
                             </div>
                             <div class="hidden sm:block">
-                                <p class="text-[9px] font-black text-white uppercase tracking-widest">ISO Certified</p>
-                                <p class="text-[7px] text-slate-500 italic">Export Ready</p>
+                                <p class="text-[9px] font-black text-white uppercase tracking-widest">NSF / SABS</p>
+                                <p class="text-[7px] text-slate-500">industrial grade</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </section>
 
+<!-- FEATURES : detergent & washing powder products (local) -->
+<section class="py-32 relative">
+    <div class="container mx-auto px-6">
+        <!-- headline with location -->
+        <div class="text-center mb-20">
+            <span class="text-blue-500 text-xs tracking-[0.3em] font-black uppercase bg-blue-500/10 px-4 py-2 rounded-full border border-blue-500/30">Kraaifontein manufacturing</span>
+            <h3 class="text-4xl md:text-5xl font-800 text-white mt-8 mb-6">Detergents you can trust</h3>
+            <p class="text-slate-400 max-w-2xl mx-auto">Formulated in our Cape Town facility — from heavy‑duty washing powder to concentrated liquid detergents for every sector.</p>
+        </div>
 
-    <section class="py-32 relative">
-        <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="glass p-10 rounded-3xl group hover:-translate-y-4 transition-all duration-500 border-t-blue-500/40 border-t-4">
-                    <div class="w-14 h-14 bg-blue-500/20 rounded-2xl flex items-center justify-center mb-6 text-blue-400 group-hover:scale-110 transition-transform">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.628.285a2 2 0 01-1.963 0l-.63-.285a6 6 0 00-3.86-.517l-2.388.477a2 2 0 00-1.022.547V18a2 2 0 002 2h11a2 2 0 002-2v-2.572zM12 11V3L4.472 6.764M12 11l7.528-3.764M12 11v8"></path></svg>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4">Surface Analytics</h3>
-                    <p class="text-slate-400">Advanced surfactant technology that breaks down organic stains at the atomic level without damaging fiber integrity.</p>
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="glass p-10 rounded-3xl group hover:-translate-y-4 transition-all duration-500 border-t-blue-500/40 border-t-4">
+                <div class="w-14 h-14 bg-blue-500/20 rounded-2xl flex items-center justify-center mb-6 text-blue-400 group-hover:scale-110 transition-transform">
+                    <!-- powder icon -->
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                 </div>
+                <h3 class="text-2xl font-bold mb-4">ActiveWash Powder</h3>
+                <p class="text-slate-400">High‑sudsing, enzyme‑boosted washing powder for heavy soil — 10kg, 25kg bags. Perfect for informal trade & spaza shops.</p>
+                <div class="mt-4 text-xs text-blue-400">★ best seller in Western Cape</div>
+            </div>
 
-                <div class="glass p-10 rounded-3xl group hover:-translate-y-4 transition-all duration-500 border-t-purple-500/40 border-t-4">
-                    <div class="w-14 h-14 bg-purple-500/20 rounded-2xl flex items-center justify-center mb-6 text-purple-400 group-hover:scale-110 transition-transform">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4">Circular Supply</h3>
-                    <p class="text-slate-400">Zero-waste manufacturing pipeline designed for global distributors and high-volume retail chains.</p>
+            <div class="glass p-10 rounded-3xl group hover:-translate-y-4 transition-all duration-500 border-t-purple-500/40 border-t-4">
+                <div class="w-14 h-14 bg-purple-500/20 rounded-2xl flex items-center justify-center mb-6 text-purple-400 group-hover:scale-110 transition-transform">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18M9 18h6M5 6h14a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2z"></path></svg>
                 </div>
+                <h3 class="text-2xl font-bold mb-4">Liquid Detergent 5L</h3>
+                <p class="text-slate-400">Concentrated, phosphate‑free liquid for commercial laundries & hospitals. Available in 5L jerry cans and 25L drums.</p>
+            </div>
 
-                <div class="glass p-10 rounded-3xl group hover:-translate-y-4 transition-all duration-500 border-t-emerald-500/40 border-t-4">
-                    <div class="w-14 h-14 bg-emerald-500/20 rounded-2xl flex items-center justify-center mb-6 text-emerald-400 group-hover:scale-110 transition-transform">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"></path></svg>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4">Eco-Synthesis</h3>
-                    <p class="text-slate-400">Proprietary phosphate-free formulas that exceed EU/US environmental safety standards by 40%.</p>
+            <div class="glass p-10 rounded-3xl group hover:-translate-y-4 transition-all duration-500 border-t-emerald-500/40 border-t-4">
+                <div class="w-14 h-14 bg-emerald-500/20 rounded-2xl flex items-center justify-center mb-6 text-emerald-400 group-hover:scale-110 transition-transform">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
                 </div>
+                <h3 class="text-2xl font-bold mb-4">BrightBulk 50kg</h3>
+                <p class="text-slate-400">Industrial washing powder for launderettes, hotels & mining accommodations. Economical, high‑performance.</p>
             </div>
         </div>
-    </section>
+        
+        <!-- extra local callout -->
+        <div class="mt-16 text-center glass p-8 max-w-3xl mx-auto rounded-3xl border border-blue-500/20">
+            <p class="text-slate-300 text-lg font-light">📍 Based in Kraaifontein Industrial Park, we supply directly to retailers, wholesalers and export partners in Namibia, Botswana & beyond.</p>
+            <a href="contact.html" class="inline-block mt-4 text-blue-400 text-sm font-bold hover:text-white transition-colors">Get a quote →</a>
+        </div>
+    </div>
+</section>
 
-
-
+<!-- FOOTER (adapted with local details) -->
 <footer class="relative bg-[#05070a] pt-24 pb-12 overflow-hidden border-t border-white/5">
     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-blue-500/50 to-transparent"></div>
     
@@ -282,50 +260,43 @@
                     BRIGHT<span class="text-blue-500 font-black">WASH</span>
                 </h3>
                 <p class="text-slate-400 text-sm leading-relaxed max-w-sm">
-                    Leading the global transition toward molecularly precise, eco-intelligent cleaning chemistry. Certified for industrial, commercial, and domestic distribution.
+                    🇿🇦 Kraaifontein, Cape Town · 021 845 6789<br>
+                    Manufacturing high‐quality washing powder and liquid detergents since 2012. B-BBEE Level 2 contributor.
                 </p>
                 <div class="flex gap-4">
-                    <a href="#" class="w-10 h-10 rounded-full glass border border-white/10 flex items-center justify-center hover:bg-blue-600 hover:border-blue-600 transition-all group">
-                        <span class="text-xs font-bold group-hover:text-white">In</span>
-                    </a>
-                    <a href="#" class="w-10 h-10 rounded-full glass border border-white/10 flex items-center justify-center hover:bg-blue-600 hover:border-blue-600 transition-all group">
-                        <span class="text-xs font-bold group-hover:text-white">X</span>
-                    </a>
-                    <a href="#" class="w-10 h-10 rounded-full glass border border-white/10 flex items-center justify-center hover:bg-blue-600 hover:border-blue-600 transition-all group">
-                        <span class="text-xs font-bold group-hover:text-white">Li</span>
-                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full glass border border-white/10 flex items-center justify-center hover:bg-blue-600 hover:border-blue-600 transition-all group"><span class="text-xs font-bold group-hover:text-white">In</span></a>
+                    <a href="#" class="w-10 h-10 rounded-full glass border border-white/10 flex items-center justify-center hover:bg-blue-600 hover:border-blue-600 transition-all group"><span class="text-xs font-bold group-hover:text-white">X</span></a>
+                    <a href="#" class="w-10 h-10 rounded-full glass border border-white/10 flex items-center justify-center hover:bg-blue-600 hover:border-blue-600 transition-all group"><span class="text-xs font-bold group-hover:text-white">Li</span></a>
                 </div>
             </div>
 
             <div class="lg:col-span-2 space-y-6">
                 <h4 class="text-[10px] font-black uppercase tracking-[0.3em] text-blue-500">Corporate</h4>
                 <ul class="space-y-4 text-sm text-slate-400">
-                    <li><a href="index.html" class="hover:text-white transition-colors">Executive Home</a></li>
-                    <li><a href="about.html" class="hover:text-white transition-colors">Our Science</a></li>
-                    <li><a href="services.html" class="hover:text-white transition-colors">Manufacturing</a></li>
-                    <li><a href="safety.html" class="hover:text-white transition-colors">Compliance</a></li>
+                    <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
+                    <li><a href="about.html" class="hover:text-white transition-colors">Our Factory</a></li>
+                    <li><a href="services.html" class="hover:text-white transition-colors">Contract Manufacturing</a></li>
+                    <li><a href="safety.html" class="hover:text-white transition-colors">Compliance (SABS)</a></li>
                 </ul>
             </div>
 
             <div class="lg:col-span-2 space-y-6">
-                <h4 class="text-[10px] font-black uppercase tracking-[0.3em] text-blue-500">Distributors</h4>
+                <h4 class="text-[10px] font-black uppercase tracking-[0.3em] text-blue-500">Products</h4>
                 <ul class="space-y-4 text-sm text-slate-400">
-                    <li><a href="products.html" class="hover:text-white transition-colors">Product Catalog</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors">SDS Database</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors">Bulk Logistics</a></li>
-                    <li><a href="contact.html" class="hover:text-white transition-colors">Partner Portal</a></li>
+                    <li><a href="products.html" class="hover:text-white transition-colors">Washing Powder</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Liquid Detergents</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Industrial 50kg bags</a></li>
+                    <li><a href="contact.html" class="hover:text-white transition-colors">Distributor application</a></li>
                 </ul>
             </div>
 
             <div class="lg:col-span-4 space-y-6">
-                <h4 class="text-[10px] font-black uppercase tracking-[0.3em] text-blue-500">Global Updates</h4>
-                <p class="text-xs text-slate-500 leading-relaxed">Join 2,500+ industrial partners receiving our chemical innovation reports.</p>
+                <h4 class="text-[10px] font-black uppercase tracking-[0.3em] text-blue-500">Bulk orders</h4>
+                <p class="text-xs text-slate-500 leading-relaxed">Get MSDS, price list & COA for our washing powder ranges.</p>
                 <div class="relative group">
-                    <input type="email" placeholder="professional@company.com" 
+                    <input type="email" placeholder="buyer@retail.co.za" 
                            class="w-full bg-white/5 border border-white/10 rounded-xl p-4 pr-12 text-sm focus:outline-none focus:border-blue-500 transition-all">
-                    <button class="absolute right-2 top-2 bottom-2 px-4 bg-blue-600 rounded-lg hover:bg-blue-500 transition-all">
-                        <span class="text-xs font-bold">Join</span>
-                    </button>
+                    <button class="absolute right-2 top-2 bottom-2 px-4 bg-blue-600 rounded-lg hover:bg-blue-500 transition-all text-xs font-bold">Send</button>
                 </div>
             </div>
         </div>
@@ -334,9 +305,9 @@
 
         <div class="flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="flex items-center gap-8 text-[9px] font-bold text-slate-500 uppercase tracking-widest">
-                <span>© 2026 Brightwash Inc.</span>
-                <a href="#" class="hover:text-white">Privacy Protocol</a>
-                <a href="#" class="hover:text-white">Terms of Supply</a>
+                <span>© 2026 Brightwash · Kraaifontein</span>
+                <a href="#" class="hover:text-white">Privacy</a>
+                <a href="#" class="hover:text-white">Terms</a>
             </div>
             
             <div class="flex items-center gap-4 glass px-4 py-2 rounded-full border border-white/10">
@@ -344,7 +315,7 @@
                     <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                     <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                 </span>
-                <span class="text-[9px] font-black text-slate-300 uppercase tracking-widest">Global Ops: Operational</span>
+                <span class="text-[9px] font-black text-slate-300 uppercase tracking-widest">Production: 24/7</span>
             </div>
         </div>
     </div>

@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact | BRIGHTWASH Global Partnership</title>
+    <title>Contact | Brightwash Kraaifontein · Detergents</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; background: #05070a; color: #e2e8f0; overflow-x: hidden; }
         
@@ -20,8 +22,18 @@
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
+            color: #fff; /* ensure text is white */
         }
-
+        /* specific styling for select dropdown to have light text and dark options */
+        .input-field select,
+        .input-field option {
+            background-color: #1a1f2e; /* dark background for options */
+            color: #fff;
+        }
+        .input-field option {
+            background-color: #1e2538; /* consistent dark background */
+            color: #fff;
+        }
         .input-field:focus {
             border-color: #3b82f6;
             background: rgba(59, 130, 246, 0.05);
@@ -29,33 +41,28 @@
             box-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
         }
 
-        /* Multi-step Logic via CSS Transitions */
-        .step-content {
-            display: none;
-            animation: fadeInRight 0.5s ease forwards;
-        }
-
-        .step-content.active {
-            display: block;
-        }
-
-        @keyframes fadeInRight {
-            from { opacity: 0; transform: translateX(20px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        .progress-node.active { background: #3b82f6; box-shadow: 0 0 15px #3b82f6; }
-        .progress-node.completed { background: #10b981; }
-
         .text-gradient {
             background: linear-gradient(135deg, #fff 40%, #94a3b8 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+        /* contact icon fix (tailwind @apply not processed, so manual) */
+        .contact-icon {
+            width: 3rem; /* 12 */
+            height: 3rem; /* 12 */
+            border-radius: 1rem; /* 2xl */
+            background: rgba(59, 130, 246, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #60a5fa; /* text-blue-400 */
+            font-size: 1.25rem; /* text-xl */
+        }
     </style>
 </head>
 <body class="bg-[#05070a] min-h-screen flex flex-col">
 
+    <!-- header (active: contact, with kraaifontein in mobile footer) -->
     <header class="fixed w-full top-0 z-[500] bg-[#050505] border-b border-white/5">
     <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         <h1 class="text-xl font-black tracking-tighter flex items-center gap-2 relative z-[600]">
@@ -69,8 +76,7 @@
             <ul class="flex gap-10 text-xs font-bold uppercase tracking-widest text-slate-400">
                 <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
                 <li><a href="about.html" class="hover:text-white transition-colors">About</a></li>
-                <li><a href="services.html" class="hover:text-white transition-colors">Services</a></li>
-                <li><a href="products.html" class="hover:text-white transition-colors">Products</a></li>
+                <li><a href="services.html" class="hover:text-white transition-colors">Services</a></li>                
                 <li><a href="safety.html" class="hover:text-white transition-colors">Safety</a></li>
                 <li><a href="contact.html" class="text-blue-500 underline decoration-2 underline-offset-8">Contact Us</a></li>
             </ul>
@@ -84,52 +90,25 @@
     </div>
 
     <div id="mobile-menu" class="fixed top-0 right-0 h-full w-[280px] bg-[#0a0a0a] border-l border-white/10 translate-x-full pointer-events-none transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] md:hidden flex flex-col shadow-[-20px_0_40px_rgba(0,0,0,0.8)]">
-        
         <div class="absolute left-0 top-0 w-[2px] h-full bg-blue-600/50"></div>
-
         <nav class="mt-24 px-8">
             <p class="text-[9px] font-black tracking-[0.4em] text-blue-500 mb-8 uppercase opacity-60">System Menu</p>
             <ul class="flex flex-col gap-1">
-                <li class="menu-item opacity-0 translate-x-10 transition-all duration-500 delay-[100ms]">
-                    <a href="index.html" class="py-3 text-lg font-bold text-white hover:text-blue-500 flex items-center justify-between group border-b border-white/[0.03]">
-                        Home <span class="text-xs font-light text-slate-600 group-hover:text-blue-500 transition-colors">01</span>
-                    </a>
-                </li>
-                <li class="menu-item opacity-0 translate-x-10 transition-all duration-500 delay-[150ms]">
-                    <a href="about.html" class="py-3 text-lg font-bold text-white hover:text-blue-500 flex items-center justify-between group border-b border-white/[0.03]">
-                        About <span class="text-xs font-light text-slate-600 group-hover:text-blue-500 transition-colors">02</span>
-                    </a>
-                </li>
-                <li class="menu-item opacity-0 translate-x-10 transition-all duration-500 delay-[200ms]">
-                    <a href="services.html" class="py-3 text-lg font-bold text-white hover:text-blue-500 flex items-center justify-between group border-b border-white/[0.03]">
-                        Services <span class="text-xs font-light text-slate-600 group-hover:text-blue-500 transition-colors">03</span>
-                    </a>
-                </li>
-                <li class="menu-item opacity-0 translate-x-10 transition-all duration-500 delay-[250ms]">
-                    <a href="products.html" class="py-3 text-lg font-bold text-white hover:text-blue-500 flex items-center justify-between group border-b border-white/[0.03]">
-                        Products <span class="text-xs font-light text-slate-600 group-hover:text-blue-500 transition-colors">04</span>
-                    </a>
-                </li>
-                <li class="menu-item opacity-0 translate-x-10 transition-all duration-500 delay-[300ms]">
-                    <a href="safety.html" class="py-3 text-lg font-bold text-white hover:text-blue-500 flex items-center justify-between group border-b border-white/[0.03]">
-                        Safety <span class="text-xs font-light text-slate-600 group-hover:text-blue-500 transition-colors">05</span>
-                    </a>
-                </li>
-                <li class="menu-item opacity-0 translate-x-10 transition-all duration-500 delay-[350ms]">
-                    <a href="contact.html" class="py-3 text-lg font-bold text-white hover:text-blue-500 flex items-center justify-between group">
-                        Contact <span class="text-xs font-light text-slate-600 group-hover:text-blue-500 transition-colors">06</span>
-                    </a>
-                </li>
+                <li class="menu-item opacity-0 translate-x-10 transition-all duration-500 delay-[100ms]"><a href="index.html" class="py-3 text-lg font-bold text-white hover:text-blue-500 flex items-center justify-between group border-b border-white/[0.03]">Home <span class="text-xs font-light text-slate-600 group-hover:text-blue-500 transition-colors">01</span></a></li>
+                <li class="menu-item opacity-0 translate-x-10 transition-all duration-500 delay-[150ms]"><a href="about.html" class="py-3 text-lg font-bold text-white hover:text-blue-500 flex items-center justify-between group border-b border-white/[0.03]">About <span class="text-xs font-light text-slate-600 group-hover:text-blue-500 transition-colors">02</span></a></li>
+                <li class="menu-item opacity-0 translate-x-10 transition-all duration-500 delay-[200ms]"><a href="services.html" class="py-3 text-lg font-bold text-white hover:text-blue-500 flex items-center justify-between group border-b border-white/[0.03]">Services <span class="text-xs font-light text-slate-600 group-hover:text-blue-500 transition-colors">03</span></a></li>
+                <li class="menu-item opacity-0 translate-x-10 transition-all duration-500 delay-[250ms]"><a href="products.html" class="py-3 text-lg font-bold text-white hover:text-blue-500 flex items-center justify-between group border-b border-white/[0.03]">Products <span class="text-xs font-light text-slate-600 group-hover:text-blue-500 transition-colors">04</span></a></li>
+                <li class="menu-item opacity-0 translate-x-10 transition-all duration-500 delay-[300ms]"><a href="safety.html" class="py-3 text-lg font-bold text-white hover:text-blue-500 flex items-center justify-between group border-b border-white/[0.03]">Safety <span class="text-xs font-light text-slate-600 group-hover:text-blue-500 transition-colors">05</span></a></li>
+                <li class="menu-item opacity-0 translate-x-10 transition-all duration-500 delay-[350ms]"><a href="contact.html" class="py-3 text-lg font-bold text-white hover:text-blue-500 flex items-center justify-between group">Contact <span class="text-xs font-light text-slate-600 group-hover:text-blue-500 transition-colors">06</span></a></li>
             </ul>
         </nav>
-
         <div class="mt-auto p-8 bg-[#070707] border-t border-white/5 opacity-0 transition-opacity duration-700 delay-[500ms]" id="menu-footer">
             <div class="flex items-center gap-3 mb-4">
                 <div class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></div>
-                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Lab Server Active</span>
+                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Contact Centre</span>
             </div>
             <p class="text-[9px] text-slate-600 uppercase tracking-widest leading-relaxed">
-                Brightwash Biological<br>Copyright 2026
+                Brightwash Kraaifontein<br>Cape Town · Since 2012
             </p>
         </div>
     </div>
@@ -144,7 +123,6 @@
         const l3 = document.getElementById('line3');
 
         let isOpen = false;
-
         btn.addEventListener('click', () => {
             isOpen = !isOpen;
             if (isOpen) {
@@ -166,96 +144,92 @@
     </script>
 </header>
 
+    <!-- MAIN CONTENT: SIMPLIFIED CONTACT FORM + LOCAL DETAILS -->
     <main class="flex-grow flex items-center justify-center pt-32 pb-20 px-6">
         <div class="max-w-4xl w-full">
             
             <div class="text-center mb-12">
-                <h2 class="text-4xl md:text-6xl font-800 text-gradient tracking-tighter mb-4">Initialize Partnership</h2>
-                <p class="text-slate-500 font-light">Complete the technical inquiry to reach our global distribution office.</p>
+                <!-- location chip -->
+                <span class="inline-flex items-center gap-2 text-xs font-black tracking-widest text-blue-400 bg-blue-500/10 border border-blue-500/30 px-4 py-2 rounded-full mb-6">
+                    <i class="fas fa-map-pin"></i> Kraaifontein · Cape Town
+                </span>
+                <h2 class="text-4xl md:text-6xl font-800 text-gradient tracking-tighter mb-4">Get in touch</h2>
+                <p class="text-slate-500 font-light max-w-xl mx-auto">Need a quote for washing powder or liquid detergent? Our Kraaifontein team replies within 4 hours.</p>
             </div>
 
-            <div class="flex items-center justify-center gap-4 mb-10">
-                <div id="node-1" class="progress-node active w-3 h-3 rounded-full transition-all duration-500"></div>
-                <div class="w-12 h-[1px] bg-white/10"></div>
-                <div id="node-2" class="progress-node w-3 h-3 rounded-full transition-all duration-500"></div>
-                <div class="w-12 h-[1px] bg-white/10"></div>
-                <div id="node-3" class="progress-node w-3 h-3 rounded-full transition-all duration-500"></div>
-            </div>
-
-            <div class="glass-card rounded-[2.5rem] p-8 md:p-12 relative overflow-hidden">
-                <form id="contactForm" class="space-y-8">
-                    
-                    <div id="step-1" class="step-content active space-y-6">
-                        <div class="grid md:grid-cols-2 gap-6">
-                            <div class="space-y-2">
-                                <label class="text-[10px] font-black uppercase tracking-widest text-blue-500">Lead Representative</label>
-                                <input type="text" placeholder="Full Name" class="input-field w-full p-4 rounded-xl text-white">
-                            </div>
-                            <div class="space-y-2">
-                                <label class="text-[10px] font-black uppercase tracking-widest text-blue-500">Corporate Email</label>
-                                <input type="email" placeholder="email@company.com" class="input-field w-full p-4 rounded-xl text-white">
-                            </div>
+            <!-- two column layout: form + direct contact info -->
+            <div class="grid md:grid-cols-5 gap-8">
+                <!-- contact form (simpler, 3 fields + submit) spans 3 cols -->
+                <div class="md:col-span-3 glass-card rounded-[2.5rem] p-8 md:p-10">
+                    <h3 class="text-xl font-black mb-6 flex items-center gap-2"><i class="fas fa-pen-alt text-blue-500"></i> Quick inquiry</h3>
+                    <form class="space-y-5">
+                        <div>
+                            <label class="text-[10px] font-black uppercase tracking-widest text-blue-500 block mb-2">Your name</label>
+                            <input type="text" placeholder="e.g. Thabo Ndlovu" class="input-field w-full p-4 rounded-xl text-white">
                         </div>
-                        <button type="button" onclick="nextStep(2)" class="w-full py-4 bg-blue-600 rounded-xl font-bold hover:bg-blue-500 transition-all flex items-center justify-center gap-2">
-                            Next: Product Selection <span>→</span>
-                        </button>
-                    </div>
-
-                    <div id="step-2" class="step-content space-y-6">
-                        <div class="space-y-2">
-                            <label class="text-[10px] font-black uppercase tracking-widest text-blue-500">Primary Product Interest</label>
-                            <select class="input-field w-full p-4 rounded-xl text-white appearance-none">
-                                <option>Washing Powder (Bulk)</option>
-                                <option>Liquid Detergents (Retail)</option>
-                                <option>Custom Chemical Formulation</option>
-                                <option>Industrial Degreasers</option>
+                        <div>
+                            <label class="text-[10px] font-black uppercase tracking-widest text-blue-500 block mb-2">Email / phone</label>
+                            <input type="text" placeholder="thabo@laundry.co.za" class="input-field w-full p-4 rounded-xl text-white">
+                        </div>
+                        <div>
+                            <label class="text-[10px] font-black uppercase tracking-widest text-blue-500 block mb-2">I'm interested in</label>
+                            <select class="input-field w-full p-4 rounded-xl text-white bg-[#1a1f2e] border-white/10">
+                                <option class="bg-[#1e2538] text-white">Washing powder (25kg bags)</option>
+                                <option class="bg-[#1e2538] text-white">Liquid detergent (5L / 25L)</option>
+                                <option class="bg-[#1e2538] text-white">Industrial 50kg drums</option>
+                                <option class="bg-[#1e2538] text-white">Contract manufacturing</option>
+                                <option class="bg-[#1e2538] text-white">SDS / technical data</option>
                             </select>
                         </div>
-                        <div class="space-y-2">
-                            <label class="text-[10px] font-black uppercase tracking-widest text-blue-500">Estimated Annual Volume (Tons)</label>
-                            <input type="number" placeholder="e.g. 500" class="input-field w-full p-4 rounded-xl text-white">
-                        </div>
-                        <div class="flex gap-4">
-                            <button type="button" onclick="nextStep(1)" class="w-1/3 py-4 glass-card rounded-xl font-bold hover:bg-white/5 transition-all">Back</button>
-                            <button type="button" onclick="nextStep(3)" class="w-2/3 py-4 bg-blue-600 rounded-xl font-bold hover:bg-blue-500 transition-all">Next: Final Review</button>
+                        <button type="submit" class="w-full py-4 bg-blue-600 rounded-xl font-bold hover:bg-blue-500 transition-all shadow-xl shadow-blue-600/20 flex items-center justify-center gap-2">
+                            <i class="fas fa-paper-plane"></i> Send message
+                        </button>
+                    </form>
+                </div>
+
+                <!-- contact details + map placeholder (2 cols) -->
+                <div class="md:col-span-2 space-y-6">
+                    <div class="glass-card rounded-[2.5rem] p-8">
+                        <h4 class="text-xs font-black tracking-widest text-blue-400 mb-6"><i class="fas fa-phone-alt mr-2"></i> DIRECT LINES</h4>
+                        <div class="space-y-5">
+                            <div class="flex items-center gap-4">
+                                <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                                <div><span class="text-xs text-slate-400">Sales & quotes</span><br><span class="font-bold text-white">073 465 3725</span></div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                                <div><span class="text-xs text-slate-400">Email</span><br><span class="font-bold text-white">luckmore@brightwash.co.za</span></div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                                <div><span class="text-xs text-slate-400">Factory</span><br><span class="font-bold text-white">Kraaifontein Industrial, Cape Town</span></div>
+                            </div>
                         </div>
                     </div>
 
-                    <div id="step-3" class="step-content space-y-6">
-                        <div class="space-y-2">
-                            <label class="text-[10px] font-black uppercase tracking-widest text-blue-500">Special Requirements / Logistics</label>
-                            <textarea rows="4" placeholder="Mention specific pH requirements or shipping destinations..." class="input-field w-full p-4 rounded-xl text-white"></textarea>
-                        </div>
-                        <div class="flex gap-4">
-                            <button type="button" onclick="nextStep(2)" class="w-1/3 py-4 glass-card rounded-xl font-bold hover:bg-white/5 transition-all">Back</button>
-                            <button type="submit" class="w-2/3 py-4 bg-emerald-600 rounded-xl font-bold hover:bg-emerald-500 transition-all shadow-xl shadow-emerald-600/20">Submit Specification</button>
+                    <!-- simple map / location card -->
+                    <div class="glass-card rounded-[2.5rem] p-6 h-48 flex flex-col justify-end relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1577086664693-894d8405334a?ixlib=rb-4.0.3&auto=format&fit=crop&w=880&q=80" 
+                             class="absolute inset-0 w-full h-full object-cover opacity-30">
+                        <div class="relative z-10">
+                            <span class="text-[10px] font-black bg-blue-600/80 text-white px-3 py-1 rounded-full">📍 Kraaifontein depot</span>
+                            <p class="text-xs text-white mt-2">Unit 5, Oude Westhof Rd<br>Weekdays 07:30 – 17:00</p>
                         </div>
                     </div>
-
-                </form>
+                </div>
             </div>
 
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12 opacity-50">
-                <div class="text-center">
-                    <div class="text-xl font-800">24h</div>
-                    <div class="text-[8px] uppercase tracking-widest">Avg Response</div>
-                </div>
-                <div class="text-center">
-                    <div class="text-xl font-800">Global</div>
-                    <div class="text-[8px] uppercase tracking-widest">Supply Chain</div>
-                </div>
-                <div class="text-center">
-                    <div class="text-xl font-800">Secure</div>
-                    <div class="text-[8px] uppercase tracking-widest">Data Transfer</div>
-                </div>
-                <div class="text-center">
-                    <div class="text-xl font-800">Direct</div>
-                    <div class="text-[8px] uppercase tracking-widest">Lab Access</div>
-                </div>
+            <!-- trust badges (simplified) -->
+            <div class="flex flex-wrap justify-center gap-6 mt-12 text-xs text-slate-500">
+                <span><i class="fas fa-check-circle text-emerald-500 mr-1"></i> Same-day quotes</span>
+                <span><i class="fas fa-check-circle text-emerald-500 mr-1"></i> SABS certified</span>
+                <span><i class="fas fa-check-circle text-emerald-500 mr-1"></i> B-BBEE Level 2</span>
+                <span><i class="fas fa-check-circle text-emerald-500 mr-1"></i> 24h dispatch</span>
             </div>
         </div>
     </main>
    
+    <!-- FOOTER (adapted kraaifontein) -->
     <footer class="relative bg-[#05070a] pt-24 pb-12 overflow-hidden border-t border-white/5">
     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-blue-500/50 to-transparent"></div>
     
@@ -270,50 +244,41 @@
                     BRIGHT<span class="text-blue-500 font-black">WASH</span>
                 </h3>
                 <p class="text-slate-400 text-sm leading-relaxed max-w-sm">
-                    Leading the global transition toward molecularly precise, eco-intelligent cleaning chemistry. Certified for industrial, commercial, and domestic distribution.
+                    🇿🇦 Kraaifontein Industrial Park, Cape Town. Manufacturing washing powder, liquid detergents and industrial cleaning chemicals since 2012. B-BBEE Level 2.
                 </p>
                 <div class="flex gap-4">
-                    <a href="#" class="w-10 h-10 rounded-full glass border border-white/10 flex items-center justify-center hover:bg-blue-600 hover:border-blue-600 transition-all group">
-                        <span class="text-xs font-bold group-hover:text-white">In</span>
-                    </a>
-                    <a href="#" class="w-10 h-10 rounded-full glass border border-white/10 flex items-center justify-center hover:bg-blue-600 hover:border-blue-600 transition-all group">
-                        <span class="text-xs font-bold group-hover:text-white">X</span>
-                    </a>
-                    <a href="#" class="w-10 h-10 rounded-full glass border border-white/10 flex items-center justify-center hover:bg-blue-600 hover:border-blue-600 transition-all group">
-                        <span class="text-xs font-bold group-hover:text-white">Li</span>
-                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full glass border border-white/10 flex items-center justify-center hover:bg-blue-600 transition-all group"><i class="fab fa-linkedin-in text-xs group-hover:text-white"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full glass border border-white/10 flex items-center justify-center hover:bg-blue-600 transition-all group"><i class="fab fa-x-twitter text-xs group-hover:text-white"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full glass border border-white/10 flex items-center justify-center hover:bg-blue-600 transition-all group"><i class="fab fa-whatsapp text-xs group-hover:text-white"></i></a>
                 </div>
             </div>
 
             <div class="lg:col-span-2 space-y-6">
-                <h4 class="text-[10px] font-black uppercase tracking-[0.3em] text-blue-500">Corporate</h4>
+                <h4 class="text-[10px] font-black uppercase tracking-[0.3em] text-blue-500">Company</h4>
                 <ul class="space-y-4 text-sm text-slate-400">
-                    <li><a href="index.html" class="hover:text-white transition-colors">Executive Home</a></li>
-                    <li><a href="about.html" class="hover:text-white transition-colors">Our Science</a></li>
-                    <li><a href="services.html" class="hover:text-white transition-colors">Manufacturing</a></li>
+                    <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
+                    <li><a href="about.html" class="hover:text-white transition-colors">About Kraaifontein</a></li>
+                    <li><a href="services.html" class="hover:text-white transition-colors">Services</a></li>
                     <li><a href="safety.html" class="hover:text-white transition-colors">Compliance</a></li>
                 </ul>
             </div>
 
             <div class="lg:col-span-2 space-y-6">
-                <h4 class="text-[10px] font-black uppercase tracking-[0.3em] text-blue-500">Distributors</h4>
+                <h4 class="text-[10px] font-black uppercase tracking-[0.3em] text-blue-500">Products</h4>
                 <ul class="space-y-4 text-sm text-slate-400">
-                    <li><a href="products.html" class="hover:text-white transition-colors">Product Catalog</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors">SDS Database</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors">Bulk Logistics</a></li>
-                    <li><a href="contact.html" class="hover:text-white transition-colors">Partner Portal</a></li>
+                    <li><a href="products.html" class="hover:text-white transition-colors">Washing Powder</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Liquid Detergent</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Industrial 50kg</a></li>
+                    <li><a href="contact.html" class="hover:text-white transition-colors">Get a quote</a></li>
                 </ul>
             </div>
 
             <div class="lg:col-span-4 space-y-6">
-                <h4 class="text-[10px] font-black uppercase tracking-[0.3em] text-blue-500">Global Updates</h4>
-                <p class="text-xs text-slate-500 leading-relaxed">Join 2,500+ industrial partners receiving our chemical innovation reports.</p>
+                <h4 class="text-[10px] font-black uppercase tracking-[0.3em] text-blue-500">Contact centre</h4>
+                <p class="text-xs text-slate-500 leading-relaxed">Call or WhatsApp: <span class="text-white font-bold">073 465 3725</span><br>email: sales@brightwash.co.za</p>
                 <div class="relative group">
-                    <input type="email" placeholder="professional@company.com" 
-                           class="w-full bg-white/5 border border-white/10 rounded-xl p-4 pr-12 text-sm focus:outline-none focus:border-blue-500 transition-all">
-                    <button class="absolute right-2 top-2 bottom-2 px-4 bg-blue-600 rounded-lg hover:bg-blue-500 transition-all">
-                        <span class="text-xs font-bold">Join</span>
-                    </button>
+                    <input type="text" placeholder="Request SDS" class="w-full bg-white/5 border border-white/10 rounded-xl p-4 pr-12 text-sm focus:outline-none focus:border-blue-500 transition-all text-white">
+                    <button class="absolute right-2 top-2 bottom-2 px-4 bg-blue-600 rounded-lg hover:bg-blue-500 transition-all text-xs font-bold">Send</button>
                 </div>
             </div>
         </div>
@@ -322,9 +287,9 @@
 
         <div class="flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="flex items-center gap-8 text-[9px] font-bold text-slate-500 uppercase tracking-widest">
-                <span>© 2026 Brightwash Inc.</span>
-                <a href="#" class="hover:text-white">Privacy Protocol</a>
-                <a href="#" class="hover:text-white">Terms of Supply</a>
+                <span>© 2026 Brightwash · Kraaifontein, Cape Town</span>
+                <a href="#" class="hover:text-white">Privacy</a>
+                <a href="#" class="hover:text-white">Terms</a>
             </div>
             
             <div class="flex items-center gap-4 glass px-4 py-2 rounded-full border border-white/10">
@@ -332,7 +297,7 @@
                     <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                     <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                 </span>
-                <span class="text-[9px] font-black text-slate-300 uppercase tracking-widest">Global Ops: Operational</span>
+                <span class="text-[9px] font-black text-slate-300 uppercase tracking-widest">Contact centre open</span>
             </div>
         </div>
     </div>
@@ -340,26 +305,5 @@
     <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-blue-600/10 rounded-full blur-[100px] pointer-events-none"></div>
 </footer>
 
-    <script>
-        function nextStep(step) {
-            // Hide all steps
-            document.querySelectorAll('.step-content').forEach(s => s.classList.remove('active'));
-            // Show current step
-            document.getElementById('step-' + step).classList.add('active');
-            
-            // Update Progress Nodes
-            document.querySelectorAll('.progress-node').forEach((node, index) => {
-                if (index + 1 < step) {
-                    node.classList.add('completed');
-                    node.classList.remove('active');
-                } else if (index + 1 === step) {
-                    node.classList.add('active');
-                    node.classList.remove('completed');
-                } else {
-                    node.classList.remove('active', 'completed');
-                }
-            });
-        }
-    </script>
 </body>
 </html>
