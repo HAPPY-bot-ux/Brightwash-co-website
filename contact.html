@@ -146,91 +146,155 @@
 
     <!-- MAIN CONTENT: SIMPLIFIED CONTACT FORM + LOCAL DETAILS -->
     <main class="flex-grow flex items-center justify-center pt-32 pb-20 px-6">
-        <div class="max-w-4xl w-full">
+       
+<div class="max-w-4xl w-full">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    
+    <div class="text-center mb-12">
+        <span class="inline-flex items-center gap-2 text-xs font-black tracking-widest text-blue-400 bg-blue-500/10 border border-blue-500/30 px-4 py-2 rounded-full mb-6">
+            <i class="fas fa-map-pin"></i> Kraaifontein · Cape Town
+        </span>
+        <h2 class="text-4xl md:text-6xl font-800 text-gradient tracking-tighter mb-4">Get in touch</h2>
+        <p class="text-slate-500 font-light max-w-xl mx-auto">Need a quote for washing powder or liquid detergent? Our Kraaifontein team replies within 4 hours.</p>
+    </div>
+
+    <div class="grid md:grid-cols-5 gap-8 max-w-6xl mx-auto">
+        <div class="md:col-span-3 glass-card rounded-[2.5rem] p-8 md:p-10 border border-white/10 shadow-2xl">
+            <h3 class="text-xl font-black mb-8 flex items-center gap-3">
+                <i class="fas fa-paper-plane text-blue-500"></i> Get a Quote
+            </h3>
             
-            <div class="text-center mb-12">
-                <!-- location chip -->
-                <span class="inline-flex items-center gap-2 text-xs font-black tracking-widest text-blue-400 bg-blue-500/10 border border-blue-500/30 px-4 py-2 rounded-full mb-6">
-                    <i class="fas fa-map-pin"></i> Kraaifontein · Cape Town
-                </span>
-                <h2 class="text-4xl md:text-6xl font-800 text-gradient tracking-tighter mb-4">Get in touch</h2>
-                <p class="text-slate-500 font-light max-w-xl mx-auto">Need a quote for washing powder or liquid detergent? Our Kraaifontein team replies within 4 hours.</p>
-            </div>
-
-            <!-- two column layout: form + direct contact info -->
-            <div class="grid md:grid-cols-5 gap-8">
-                <!-- contact form (simpler, 3 fields + submit) spans 3 cols -->
-                <div class="md:col-span-3 glass-card rounded-[2.5rem] p-8 md:p-10">
-                    <h3 class="text-xl font-black mb-6 flex items-center gap-2"><i class="fas fa-pen-alt text-blue-500"></i> Quick inquiry</h3>
-                    <form class="space-y-5">
-                        <div>
-                            <label class="text-[10px] font-black uppercase tracking-widest text-blue-500 block mb-2">Your name</label>
-                            <input type="text" placeholder="e.g. Thabo Ndlovu" class="input-field w-full p-4 rounded-xl text-white">
-                        </div>
-                        <div>
-                            <label class="text-[10px] font-black uppercase tracking-widest text-blue-500 block mb-2">Email / phone</label>
-                            <input type="text" placeholder="thabo@laundry.co.za" class="input-field w-full p-4 rounded-xl text-white">
-                        </div>
-                        <div>
-                            <label class="text-[10px] font-black uppercase tracking-widest text-blue-500 block mb-2">I'm interested in</label>
-                            <select class="input-field w-full p-4 rounded-xl text-white bg-[#1a1f2e] border-white/10">
-                                <option class="bg-[#1e2538] text-white">Washing powder (25kg bags)</option>
-                                <option class="bg-[#1e2538] text-white">Liquid detergent (5L / 25L)</option>
-                                <option class="bg-[#1e2538] text-white">Industrial 50kg drums</option>
-                                <option class="bg-[#1e2538] text-white">Contract manufacturing</option>
-                                <option class="bg-[#1e2538] text-white">SDS / technical data</option>
-                            </select>
-                        </div>
-                        <button type="submit" class="w-full py-4 bg-blue-600 rounded-xl font-bold hover:bg-blue-500 transition-all shadow-xl shadow-blue-600/20 flex items-center justify-center gap-2">
-                            <i class="fas fa-paper-plane"></i> Send message
-                        </button>
-                    </form>
+            <form id="contactForm" class="space-y-4">
+                <div>
+                    <label class="text-[10px] font-black uppercase tracking-widest text-blue-500 block mb-2 ml-1">Full Name</label>
+                    <input type="text" id="fullName" name="name" placeholder="e.g. Thabo Ndlovu" required
+                           class="w-full bg-white/5 border border-white/10 p-4 rounded-2xl text-white focus:border-blue-500 outline-none transition-all">
                 </div>
 
-                <!-- contact details + map placeholder (2 cols) -->
-                <div class="md:col-span-2 space-y-6">
-                    <div class="glass-card rounded-[2.5rem] p-8">
-                        <h4 class="text-xs font-black tracking-widest text-blue-400 mb-6"><i class="fas fa-phone-alt mr-2"></i> DIRECT LINES</h4>
-                        <div class="space-y-5">
-                            <div class="flex items-center gap-4">
-                                <div class="contact-icon"><i class="fas fa-phone"></i></div>
-                                <div><span class="text-xs text-slate-400">Sales & quotes</span><br><span class="font-bold text-white">073 465 3725</span></div>
-                            </div>
-                            <div class="flex items-center gap-4">
-                                <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-                                <div><span class="text-xs text-slate-400">Email</span><br><span class="font-bold text-white">luckmore@brightwash.co.za</span></div>
-                            </div>
-                            <div class="flex items-center gap-4">
-                                <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
-                                <div><span class="text-xs text-slate-400">Factory</span><br><span class="font-bold text-white">Kraaifontein Industrial, Cape Town</span></div>
-                            </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="text-[10px] font-black uppercase tracking-widest text-blue-500 block mb-2 ml-1">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="name@company.co.za" required
+                               class="w-full bg-white/5 border border-white/10 p-4 rounded-2xl text-white focus:border-blue-500 outline-none transition-all">
+                    </div>
+                    <div>
+                        <label class="text-[10px] font-black uppercase tracking-widest text-blue-500 block mb-2 ml-1">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="071 234 5678" required
+                               class="w-full bg-white/5 border border-white/10 p-4 rounded-2xl text-white focus:border-blue-500 outline-none transition-all">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="text-[10px] font-black uppercase tracking-widest text-blue-500 block mb-2 ml-1">How can we help?</label>
+                    <textarea id="message" name="message" placeholder="Tell us about your requirements..." rows="4" required
+                              class="w-full bg-white/5 border border-white/10 p-4 rounded-2xl text-white focus:border-blue-500 outline-none transition-all resize-none"></textarea>
+                </div>
+
+                <button type="submit" id="submitBtn" class="w-full py-4 bg-blue-600 hover:bg-blue-500 rounded-2xl font-bold text-white transition-all shadow-xl shadow-blue-600/20 active:scale-[0.98]">
+                    Submit Inquiry
+                </button>
+            </form>
+        </div>
+
+        <div class="md:col-span-2 space-y-6">
+            <div class="glass-card rounded-[2.5rem] p-8 border border-white/5">
+                <p class="text-[10px] font-black tracking-[0.2em] text-blue-400 mb-6 uppercase">Contact Details</p>
+                <div class="space-y-6">
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-500 shrink-0">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div>
+                            <span class="text-[10px] text-slate-500 font-bold uppercase">Sales Line</span>
+                            <p class="text-white font-bold">073 465 3725</p>
                         </div>
                     </div>
-
-                    <!-- simple map / location card -->
-                    <div class="glass-card rounded-[2.5rem] p-6 h-48 flex flex-col justify-end relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1577086664693-894d8405334a?ixlib=rb-4.0.3&auto=format&fit=crop&w=880&q=80" 
-                             class="absolute inset-0 w-full h-full object-cover opacity-30">
-                        <div class="relative z-10">
-                            <span class="text-[10px] font-black bg-blue-600/80 text-white px-3 py-1 rounded-full">📍 Kraaifontein depot</span>
-                            <p class="text-xs text-white mt-2">Unit 5, Oude Westhof Rd<br>Weekdays 07:30 – 17:00</p>
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-500 shrink-0">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <span class="text-[10px] text-slate-500 font-bold uppercase">Email Support</span>
+                            <p class="text-white font-bold text-sm truncate">luckmore@brightwash.co.za</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- trust badges (simplified) -->
-            <div class="flex flex-wrap justify-center gap-6 mt-12 text-xs text-slate-500">
-                <span><i class="fas fa-check-circle text-emerald-500 mr-1"></i> Same-day quotes</span>
-                <span><i class="fas fa-check-circle text-emerald-500 mr-1"></i> SABS certified</span>
-                <span><i class="fas fa-check-circle text-emerald-500 mr-1"></i> B-BBEE Level 2</span>
-                <span><i class="fas fa-check-circle text-emerald-500 mr-1"></i> 24h dispatch</span>
+            <div class="glass-card rounded-[2.5rem] p-6 bg-gradient-to-br from-blue-600/20 to-transparent border border-blue-500/10">
+                <div class="flex items-center gap-3">
+                    <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                    <p class="text-xs text-white font-medium">Depot Open: 07:30 – 17:00</p>
+                </div>
             </div>
         </div>
+    </div>
+    
+    <div id="successPopup" class="fixed top-5 right-5 bg-emerald-500 text-white px-6 py-4 rounded-2xl shadow-2xl transform transition-all duration-500 translate-x-full opacity-0 z-50 flex items-center gap-3">
+        <i class="fas fa-check-circle text-2xl"></i>
+        <div>
+            <h4 class="font-bold">Message Sent!</h4>
+            <p class="text-sm text-emerald-100">Talk soon!</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        emailjs.init("IIah_bYgK54svJc-7");
+    })();
+
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        const submitBtn = document.getElementById('submitBtn');
+        const originalText = submitBtn.textContent;
+        
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Processing...';
+        submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
+        
+        const formData = {
+            name: document.getElementById('fullName').value,
+            email: document.getElementById('email').value,
+            phone: document.getElementById('phone').value,
+            message: document.getElementById('message').value,
+            // Fixed timezone string to standard IANA format
+            time: new Date().toLocaleString('en-ZA', { 
+                timeZone: 'Africa/Johannesburg',
+                dateStyle: 'medium',
+                timeStyle: 'short'
+            }), 
+            to_name: 'Brightwash Team'
+        };
+
+        emailjs.send('service_pzve3hr', 'template_hkxlf5r', formData)
+            .then(function(response) {
+                const popup = document.getElementById('successPopup');
+                popup.classList.remove('translate-x-full', 'opacity-0');
+                
+                setTimeout(() => {
+                    popup.classList.add('translate-x-full', 'opacity-0');
+                }, 5000);
+                
+                document.getElementById('contactForm').reset();
+            })
+            .catch(function(error) {
+                console.error('EmailJS Error:', error);
+                alert('Oops! Could not send. Please check your connection.');
+            })
+            .finally(function() {
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+                submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+            });
+    });
+</script>
+
     </main>
    
     <!-- FOOTER (adapted kraaifontein) -->
-    <footer class="relative bg-[#05070a] pt-24 pb-12 overflow-hidden border-t border-white/5">
+  <footer class="relative bg-[#05070a] pt-24 pb-12 overflow-hidden border-t border-white/5">
     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-blue-500/50 to-transparent"></div>
     
     <div class="max-w-7xl mx-auto px-6">
@@ -244,22 +308,23 @@
                     BRIGHT<span class="text-blue-500 font-black">WASH</span>
                 </h3>
                 <p class="text-slate-400 text-sm leading-relaxed max-w-sm">
-                    🇿🇦 Kraaifontein Industrial Park, Cape Town. Manufacturing washing powder, liquid detergents and industrial cleaning chemicals since 2012. B-BBEE Level 2.
+                    🇿🇦 Kraaifontein, Cape Town · 021 845 6789<br>
+                    Manufacturing high‐quality washing powder and liquid detergents since 2012. B-BBEE Level 2 contributor.
                 </p>
                 <div class="flex gap-4">
-                    <a href="#" class="w-10 h-10 rounded-full glass border border-white/10 flex items-center justify-center hover:bg-blue-600 transition-all group"><i class="fab fa-linkedin-in text-xs group-hover:text-white"></i></a>
-                    <a href="#" class="w-10 h-10 rounded-full glass border border-white/10 flex items-center justify-center hover:bg-blue-600 transition-all group"><i class="fab fa-x-twitter text-xs group-hover:text-white"></i></a>
-                    <a href="#" class="w-10 h-10 rounded-full glass border border-white/10 flex items-center justify-center hover:bg-blue-600 transition-all group"><i class="fab fa-whatsapp text-xs group-hover:text-white"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full glass border border-white/10 flex items-center justify-center hover:bg-blue-600 hover:border-blue-600 transition-all group"><span class="text-xs font-bold group-hover:text-white">In</span></a>
+                    <a href="#" class="w-10 h-10 rounded-full glass border border-white/10 flex items-center justify-center hover:bg-blue-600 hover:border-blue-600 transition-all group"><span class="text-xs font-bold group-hover:text-white">X</span></a>
+                    <a href="#" class="w-10 h-10 rounded-full glass border border-white/10 flex items-center justify-center hover:bg-blue-600 hover:border-blue-600 transition-all group"><span class="text-xs font-bold group-hover:text-white">Li</span></a>
                 </div>
             </div>
 
             <div class="lg:col-span-2 space-y-6">
-                <h4 class="text-[10px] font-black uppercase tracking-[0.3em] text-blue-500">Company</h4>
+                <h4 class="text-[10px] font-black uppercase tracking-[0.3em] text-blue-500">Corporate</h4>
                 <ul class="space-y-4 text-sm text-slate-400">
                     <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
-                    <li><a href="about.html" class="hover:text-white transition-colors">About Kraaifontein</a></li>
-                    <li><a href="services.html" class="hover:text-white transition-colors">Services</a></li>
-                    <li><a href="safety.html" class="hover:text-white transition-colors">Compliance</a></li>
+                    <li><a href="about.html" class="hover:text-white transition-colors">Our Factory</a></li>
+                    <li><a href="services.html" class="hover:text-white transition-colors">Contract Manufacturing</a></li>
+                    <li><a href="safety.html" class="hover:text-white transition-colors">Compliance (SABS)</a></li>
                 </ul>
             </div>
 
@@ -267,17 +332,18 @@
                 <h4 class="text-[10px] font-black uppercase tracking-[0.3em] text-blue-500">Products</h4>
                 <ul class="space-y-4 text-sm text-slate-400">
                     <li><a href="products.html" class="hover:text-white transition-colors">Washing Powder</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors">Liquid Detergent</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors">Industrial 50kg</a></li>
-                    <li><a href="contact.html" class="hover:text-white transition-colors">Get a quote</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Liquid Detergents</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Industrial 50kg bags</a></li>
+                    <li><a href="contact.html" class="hover:text-white transition-colors">Distributor application</a></li>
                 </ul>
             </div>
 
             <div class="lg:col-span-4 space-y-6">
-                <h4 class="text-[10px] font-black uppercase tracking-[0.3em] text-blue-500">Contact centre</h4>
-                <p class="text-xs text-slate-500 leading-relaxed">Call or WhatsApp: <span class="text-white font-bold">073 465 3725</span><br>email: sales@brightwash.co.za</p>
+                <h4 class="text-[10px] font-black uppercase tracking-[0.3em] text-blue-500">Bulk orders</h4>
+                <p class="text-xs text-slate-500 leading-relaxed">Get MSDS, price list & COA for our washing powder ranges.</p>
                 <div class="relative group">
-                    <input type="text" placeholder="Request SDS" class="w-full bg-white/5 border border-white/10 rounded-xl p-4 pr-12 text-sm focus:outline-none focus:border-blue-500 transition-all text-white">
+                    <input type="email" placeholder="buyer@retail.co.za" 
+                           class="w-full bg-white/5 border border-white/10 rounded-xl p-4 pr-12 text-sm focus:outline-none focus:border-blue-500 transition-all">
                     <button class="absolute right-2 top-2 bottom-2 px-4 bg-blue-600 rounded-lg hover:bg-blue-500 transition-all text-xs font-bold">Send</button>
                 </div>
             </div>
@@ -287,7 +353,7 @@
 
         <div class="flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="flex items-center gap-8 text-[9px] font-bold text-slate-500 uppercase tracking-widest">
-                <span>© 2026 Brightwash · Kraaifontein, Cape Town</span>
+                <span>© 2026 Brightwash · Kraaifontein</span>
                 <a href="#" class="hover:text-white">Privacy</a>
                 <a href="#" class="hover:text-white">Terms</a>
             </div>
@@ -297,7 +363,7 @@
                     <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                     <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                 </span>
-                <span class="text-[9px] font-black text-slate-300 uppercase tracking-widest">Contact centre open</span>
+                <span class="text-[9px] font-black text-slate-300 uppercase tracking-widest">Production: 24/7</span>
             </div>
         </div>
     </div>
